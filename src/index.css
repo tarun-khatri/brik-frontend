@@ -3,71 +3,72 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Brik Design System - Crypto-native, minimal, trust through simplicity */
+/* Brik Design System - Beautiful purple theme inspired by brik.gg */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 6%;
+    /* Beautiful purple gradient background */
+    --background: 261 94% 20%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 6%;
+    --card: 261 50% 15%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 6%;
+    --popover: 261 50% 15%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Brik Purple Primary */
-    --primary: 261 94% 46%;
+    /* Brik Purple Primary - brighter for contrast */
+    --primary: 261 94% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 6%;
+    --secondary: 261 30% 25%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 46%;
+    --muted: 261 30% 25%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 6%;
+    --accent: 261 50% 30%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 91%;
-    --input: 0 0% 91%;
-    --ring: 261 94% 46%;
+    --border: 261 30% 35%;
+    --input: 261 30% 25%;
+    --ring: 261 94% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
 
   .dark {
-    /* Dark mode - #1F1F1F background */
-    --background: 0 0% 12%;
+    /* Even darker purple for dark mode */
+    --background: 261 94% 12%;
     --foreground: 0 0% 98%;
 
-    --card: 0 0% 12%;
+    --card: 261 50% 8%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 12%;
+    --popover: 261 50% 8%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 261 94% 46%;
+    --primary: 261 94% 65%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 17%;
+    --secondary: 261 30% 15%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 0 0% 17%;
+    --muted: 261 30% 15%;
     --muted-foreground: 0 0% 65%;
 
-    --accent: 0 0% 17%;
+    --accent: 261 50% 20%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 17%;
-    --input: 0 0% 17%;
-    --ring: 261 94% 46%;
+    --border: 261 30% 25%;
+    --input: 261 30% 15%;
+    --ring: 261 94% 65%;
   }
 }
 
@@ -79,19 +80,56 @@
   body {
     @apply bg-background text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(261 80% 25%) 100%);
+    min-height: 100vh;
   }
 }
 
-/* Custom animations for crypto-native feel */
+/* Beautiful gradient overlays */
+.purple-gradient {
+  background: linear-gradient(135deg, hsl(261 94% 20%) 0%, hsl(261 80% 30%) 100%);
+}
+
+.dark .purple-gradient {
+  background: linear-gradient(135deg, hsl(261 94% 12%) 0%, hsl(261 80% 20%) 100%);
+}
+
+/* Custom animations for beautiful effects */
 @keyframes float {
   0%, 100% {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(261 94% 60% / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(261 94% 60% / 0.6);
   }
 }
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }

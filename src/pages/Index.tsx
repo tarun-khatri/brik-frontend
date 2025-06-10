@@ -1,33 +1,41 @@
 
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Vault, ArrowRight, Shield, Clock, Wallet } from "lucide-react";
+import { Shield, Clock, Wallet, Vault } from "lucide-react";
 
 const Index = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen purple-gradient text-foreground relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-primary/20 rounded-full blur-xl animate-float"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-primary/30 rounded-full blur-lg animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-primary/15 rounded-full blur-2xl animate-float" style={{animationDelay: '4s'}}></div>
+      </div>
+
       {/* Header */}
-      <header className="flex items-center justify-between px-6 py-4 border-b border-border">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">B</span>
-          </div>
-          <span className="text-xl font-bold">Brik</span>
+      <header className="relative z-10 flex items-center justify-between px-6 py-6">
+        <div className="flex items-center gap-3">
+          <img 
+            src="/lovable-uploads/0454b647-0064-402c-9f1f-6e2e9151a74a.png" 
+            alt="Brik Logo" 
+            className="w-10 h-10 object-contain"
+          />
+          <span className="text-2xl font-bold text-white">BRIK</span>
         </div>
         
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#why" className="text-muted-foreground hover:text-foreground transition-colors">
+          <a href="#why" className="text-white/80 hover:text-white transition-colors text-lg">
             Why Brik
           </a>
-          <a href="#assets" className="text-muted-foreground hover:text-foreground transition-colors">
+          <a href="#assets" className="text-white/80 hover:text-white transition-colors text-lg">
             Assets
           </a>
           <Button 
             onClick={() => navigate("/connect")}
-            className="bg-primary text-primary-foreground hover:bg-primary/90"
+            className="bg-primary text-white hover:bg-primary/90 px-6 py-3 text-lg font-semibold animate-glow"
           >
             Connect Wallet
           </Button>
@@ -35,57 +43,53 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <main className="container mx-auto px-6 py-16">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <main className="relative z-10 container mx-auto px-6 py-20">
+        <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[70vh]">
           <div className="space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+            <div className="space-y-6">
+              <h1 className="text-6xl lg:text-7xl font-bold leading-tight text-white">
                 The Future of Asset Ownership Is{" "}
-                <span className="text-primary">On-Chain</span>
+                <span className="text-transparent bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text animate-pulse">
+                  On-Chain
+                </span>
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed">
+              <p className="text-2xl text-white/90 leading-relaxed max-w-2xl">
                 Earn from real-world assets—tokenized, vault-secured, and 1:1 backed.
               </p>
             </div>
-            
-            <Button 
-              size="lg" 
-              className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6"
-              onClick={() => navigate("/connect")}
-            >
-              Get Early Access
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
           </div>
           
-          {/* Visual */}
+          {/* Beautiful Visual */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
-              <div className="w-80 h-80 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full flex items-center justify-center">
-                <div className="w-48 h-48 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-2xl">
-                  <Vault className="w-24 h-24 text-yellow-100" />
+              <div className="w-96 h-96 bg-gradient-to-br from-yellow-400/30 to-yellow-600/20 rounded-full flex items-center justify-center glass animate-float">
+                <div className="w-64 h-64 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-2xl animate-glow">
+                  <Vault className="w-32 h-32 text-yellow-100" />
                 </div>
               </div>
-              <div className="absolute -top-4 -right-4 w-16 h-16 bg-primary rounded-full flex items-center justify-center animate-pulse">
-                <span className="text-primary-foreground font-bold">$</span>
+              <div className="absolute -top-6 -right-6 w-20 h-20 bg-primary rounded-full flex items-center justify-center animate-pulse glass">
+                <span className="text-white font-bold text-2xl">$</span>
+              </div>
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center animate-bounce glass">
+                <span className="text-white font-bold text-xl">₿</span>
               </div>
             </div>
           </div>
         </div>
         
-        {/* Footer Teaser */}
-        <div className="mt-24 flex flex-wrap justify-center gap-8 text-center">
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Shield className="w-5 h-5" />
-            <span>No KYC</span>
+        {/* Beautiful Footer Features */}
+        <div className="mt-32 flex flex-wrap justify-center gap-12 text-center">
+          <div className="flex items-center gap-3 text-white/80 glass rounded-full px-6 py-3">
+            <Shield className="w-6 h-6 text-primary" />
+            <span className="text-lg font-medium">No KYC</span>
           </div>
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Clock className="w-5 h-5" />
-            <span>24/7 on-chain</span>
+          <div className="flex items-center gap-3 text-white/80 glass rounded-full px-6 py-3">
+            <Clock className="w-6 h-6 text-primary" />
+            <span className="text-lg font-medium">24/7 on-chain</span>
           </div>
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Wallet className="w-5 h-5" />
-            <span>Wallet-based</span>
+          <div className="flex items-center gap-3 text-white/80 glass rounded-full px-6 py-3">
+            <Wallet className="w-6 h-6 text-primary" />
+            <span className="text-lg font-medium">Wallet-based</span>
           </div>
         </div>
       </main>
