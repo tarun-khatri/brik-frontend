@@ -1,33 +1,25 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { WalletProvider } from './lib/wallet';
+//import { TopNavbar } from './components/SidebarNav';
+import { TopBar } from './components/TopBar';
+import { SwapWidget } from './components/SwapWidget';
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import Connect from "./pages/Connect";
-import Mint from "./pages/Mint";
-import Success from "./pages/Success";
-import NotFound from "./pages/NotFound";
-
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/connect" element={<Connect />} />
-          <Route path="/mint" element={<Mint />} />
-          <Route path="/success" element={<Success />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+function App() {
+  return (
+    <Router>
+      <WalletProvider>
+        <div className="min-h-screen w-full flex flex-col purple-gradient text-foreground">
+          {/*<TopNavbar />*/}
+          <TopBar />
+          <div className="flex-1 flex items-center justify-center p-8">
+            <Routes>
+              <Route path="/" element={<SwapWidget />} />
+            </Routes>
+          </div>
+        </div>
+      </WalletProvider>
+    </Router>
+  );
+}
 
 export default App;
